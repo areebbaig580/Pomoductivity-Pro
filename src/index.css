@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+  --color-secondary: #1f1f1fb7;
+  --color-secondary-white: #353535cf;
+  --color-secondary-hover: #515151cf;
+  --color-text-purple: #8A75E6;
+  
+}
+
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
