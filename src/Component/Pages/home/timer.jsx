@@ -35,8 +35,8 @@ const Timer = ({ timerState }) => {
   return (
     <div className='flex flex-col w-full h-fit items-center md:h-fit'>
 
-      <div className='text-[35vw] md:text-[12vw] text-text-purple'>{mins}:{sec}</div>
-      <button className='h-fit w-fit text-[8vw] md:text-[2vw] bg-text-purple px-10 py-2 rounded-2xl cursor-pointer'
+      <div className='text-[32vw] md:text-[12vw] text-text-purple'>{mins}:{sec}</div>
+      <button className='h-fit w-fit text-[8vw] md:text-[2vw] text-btn bg-text-purple px-10 py-2 rounded-2xl cursor-pointer'
         onClick={() =>
           setRunning(r => !r)}>
         {isRunning ? 'Pause' : 'Start'}</button>
