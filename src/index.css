@@ -1,15 +1,60 @@
 @import "tailwindcss";
 
 @theme {
+  --color-bg: #111111;
   --color-secondary: #1f1f1fb7;
   --color-secondary-white: #353535cf;
   --color-secondary-hover: #515151cf;
   --color-text-purple: #8A75E6;
-  
+  --color-text: #FFFF;
+  --color-active: #383838b7;
+  --color-btn: #FFFF;
+  --color-logo: #ffffff;
+  --color-heading1: #ffffff;
+}
+
+[data-theme="pink"] {
+  --color-bg: #f9cee7;
+  --color-secondary: #fde4f2;
+  --color-secondary-white: #f4b8da;
+  --color-secondary-hover: #fdadda;
+  --color-active: #f4b8da;
+  --color-text-purple: #e68bbe;
+  --color-text: #000000;;
+  --color-btn: #FFFAF3;
+  --color-logo: #000000;
+  --color-heading1: #000000;
+
+}
+[data-theme="ocean"] {
+  --color-bg: #505a74;
+  --color-secondary: #eaebfe;
+  --color-secondary-white: #eaebfe;
+  --color-secondary-hover: #eaebfe;
+  --color-active: #b0b8ce;
+  --color-text-purple: #022954;
+  --color-text: #000000;;
+  --color-btn: #FFFAF3;
+  --color-logo: #ffffff;
+  --color-heading1: #ffffff;
+
+}
+[data-theme="aesthetic"] {
+  --color-bg: #202127;
+  --color-secondary: #272930;
+  --color-secondary-white: #24262d;
+  --color-secondary-hover: #1f2026;
+  --color-active: #1f2127;
+  --color-text-purple: #f7f7f8;
+  --color-text: #ffffff;
+  --color-btn: #000000;
+  --color-logo: #ffffff;
+  --color-heading1: #ffffff;
+
 }
 
 .input::-webkit-inner-spin-button,
 .input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
