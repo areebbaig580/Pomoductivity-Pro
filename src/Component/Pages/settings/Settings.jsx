@@ -5,6 +5,7 @@ import TimerControl from './TimerControl'
 import HeadingComp from './HeadingComp'
 import Themecard from './Themecard'
 import ThemeCardsCtr from './ThemeCardsCtr'
+import NotificationSet from './NotificationSet'
 
 const Settings = () => {
     return (
@@ -15,6 +16,7 @@ const Settings = () => {
             <HeadingComp label={"Themes"} />
             <ThemeCardsCtr />
             <HeadingComp label={"Notification"} />
+            <NotificationSet/>
 
         </div>
     )
