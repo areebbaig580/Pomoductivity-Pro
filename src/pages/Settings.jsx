@@ -1,20 +1,18 @@
-import { ChevronDown, ChevronUp, Heading } from 'lucide-react'
 import React from 'react'
-import Head from './Head'
-import TimerControl from './TimerControl'
-import HeadingComp from './HeadingComp'
-import Themecard from './Themecard'
-import ThemeCardsCtr from './ThemeCardsCtr'
-import NotificationSet from './NotificationSet'
+import Head from '../Component/settings/Head'
+import TimerControl from '../Component/settings/TimerControl'
+import HeadingComp from '../Component/settings/HeadingComp'
+import NotificationSet from '../Component/settings/NotificationSet'
+import Themesett from '../Component/settings/Themesett'
 
 const Settings = ({ notifyMode, setNotifyMode, notifyValue, setNotifyValue }) => {
     return (
-        <div className=' h-screen w-screen flex flex-col items-center px-3'>
+        <div className=' min-h-screen w-full flex flex-col items-center px-3 bg-bg'>
             <Head />
             <HeadingComp label={"Timer"} />
             <TimerControl />
             <HeadingComp label={"Themes"} />
-            <ThemeCardsCtr />
+            <Themesett />
             <HeadingComp label={"Notification"} />
             <NotificationSet
                 notifyMode={notifyMode}
