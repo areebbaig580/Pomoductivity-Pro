@@ -7,7 +7,7 @@ import Themecard from './Themecard'
 import ThemeCardsCtr from './ThemeCardsCtr'
 import NotificationSet from './NotificationSet'
 
-const Settings = () => {
+const Settings = ({ notifyMode, setNotifyMode, notifyValue, setNotifyValue }) => {
     return (
         <div className=' h-screen w-screen flex flex-col items-center px-3'>
             <Head />
@@ -16,8 +16,11 @@ const Settings = () => {
             <HeadingComp label={"Themes"} />
             <ThemeCardsCtr />
             <HeadingComp label={"Notification"} />
-            <NotificationSet/>
-
+            <NotificationSet
+                notifyMode={notifyMode}
+                setNotifyMode={setNotifyMode}
+                notifyValue={notifyValue}
+                setNotifyValue={setNotifyValue} />
         </div>
     )
 }

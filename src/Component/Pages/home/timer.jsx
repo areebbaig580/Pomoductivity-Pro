@@ -1,15 +1,33 @@
+import { SquareCheck } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react'
 
-const Timer = ({ timerState }) => {
+const Timer = ({ timerState, label, notifyValue, notifyMode }) => {
+
   const [remainingSec, setRemainingSec] = useState(timerState);
   const [isRunning, setRunning] = useState(false);
   const intervalRef = useRef(null);
+  const notifyRef = useRef(null);
+  const remainingRef = useRef(remainingSec);
+
+  useEffect(() => {
+    remainingRef.current = remainingSec;
+  }, [remainingSec]);
 
   useEffect(() => {
     clearInterval(intervalRef.current);
     setRunning(false);
     setRemainingSec(timerState);
   }, [timerState]);
+
+  if (notifyMode === 'last') {
+
+    useEffect(() => {
+      if (remainingSec === notifyValue * 60) {
+        new Notification("5 minutes left!");
+      }
+
+    }, [remainingSec]);
+  }
 
   useEffect(() => {
     if (!isRunning) return;
@@ -19,6 +37,10 @@ const Timer = ({ timerState }) => {
 
         if (prev <= 1) {
           clearInterval(intervalRef.current);
+          new Notification(`${label} completed`, {
+            requireInteraction: true
+          });
+
           return 0;
         }
 
@@ -26,7 +48,18 @@ const Timer = ({ timerState }) => {
       })
     }, 1000);
 
-    return () => clearInterval(intervalRef.current)
+    if (notifyMode === 'every') {
+
+      notifyRef.current = setInterval(() => {
+        new Notification(`${Math.round(remainingRef.current / 60)} min remaining`);
+      }, notifyValue * 60 * 1000);
+    }
+
+    return () => {
+      clearInterval(intervalRef.current);
+      clearInterval(notifyRef.current);
+    };
+
   }, [isRunning])
 
   let mins = String(Math.floor(remainingSec / 60)).padStart(2, '0');

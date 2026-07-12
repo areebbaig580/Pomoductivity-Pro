@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const TimerState = ({ setTimerstate }) => {
+const TimerState = ({ setTimerstate , setLabel}) => {
     const [active, setActive] = useState('focus');
 
     const duration = JSON.parse(localStorage.getItem('pomodoro')) || { focus: 25, shortBreak: 5, longBreak: 15 };
@@ -20,6 +20,7 @@ const TimerState = ({ setTimerstate }) => {
                     onClick={() => {
                         setActive(mode.id);
                         setTimerstate(mode.duration);
+                        setLabel(mode.label)
                     }}
                 >
                     {mode.label}
