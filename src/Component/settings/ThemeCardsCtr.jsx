@@ -4,31 +4,24 @@ import Themecard from './Themecard'
 const ThemeCardsCtr = () => {
   return (
     <div className='h-fit w-full flex flex-wrap gap-3 pl-2 mt-2'>
-      <Themecard 
-      name = ''
-      from = '#8A75E6'
-      to = '#1e1e1f'
-
-      />
-      <Themecard 
-      name = 'ocean'
-      from = '#022954'
-      to = '#505a74'
-
-      />
-      <Themecard 
-      name = 'aesthetic'
-      from = '#202127'
-      to = '#f7f7f8'
-
-      />
-
       <Themecard
-      name = 'pink'
-      from = '#eea1cd'
-      to = '#fde4f2'
+        name=''
+        bg='#8A75E6'
       />
-    
+      <Themecard
+        name='aesthetic'
+        bg='#202127'
+      />
+      <Themecard
+        name='white'
+        bg='#6C757D'
+      />
+      <Themecard
+        name='red'
+        bg='#ff8fa3'
+      />
+
+
     </div>
   )
 }

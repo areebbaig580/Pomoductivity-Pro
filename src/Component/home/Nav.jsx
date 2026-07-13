@@ -9,8 +9,8 @@ const Nav = () => {
       <div className='flex gap-1 font-bold text-sm text-logo items-center'><SquareCheck className=''/>Pomoductivity</div>
       <div className='flex gap-5'>
 
-        {/* <Link className='h-fit w-fit px-2 py-2 bg-secondary-white hover:bg-secondary-hover rounded-2xl flex gap-1 text-sm items-center font-semibold' to='/dashboard'><ChartSpline size={18} />
-          <div className='hidden md:block'>Dashboard</div></Link> */}
+        <Link className='h-fit w-fit px-2 py-2 bg-secondary-white hover:bg-secondary-hover rounded-2xl flex gap-1 text-sm items-center font-semibold' to='/dashboard'><ChartSpline size={18} />
+          <div className='hidden md:block'>Dashboard</div></Link>
         <Link className='h-fit w-fit px-2 py-2 bg-secondary-white hover:bg-secondary-hover rounded-2xl flex gap-1 text-sm items-center font-semibold' to='/setting'><Settings size={18} />
           <div className='hidden md:block'>Settings</div></Link>
       </div>
