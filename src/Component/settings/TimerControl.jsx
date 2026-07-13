@@ -52,14 +52,6 @@ const TimerControl = () => {
           }}
         />
       </div>
-      <div className='flex w-full px-2 justify-between mt-8'>
-          <div className='text-sm md:text-[1rem]'>Auto start break</div>
-          <div><SwitchDemo/></div>
-      </div>
-      <div className='flex w-full px-2 justify-between mt-8'>
-          <div className='text-sm md:text-[1rem]'>Auto start Pomodoro</div>
-          <div><SwitchDemo/></div>
-      </div>
     
     </div>
   )

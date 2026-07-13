@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-const Timer = ({ timerState, label, notifyValue, notifyMode }) => {
+const Timer = ({ timerState, label, notifyValue, notifyMode ,alarm }) => {
 
   const [remainingSec, setRemainingSec] = useState(timerState);
   const [isRunning, setRunning] = useState(false);
   const intervalRef = useRef(null);
   const notifyRef = useRef(null);
   const remainingRef = useRef(remainingSec);
+  const sound = new Audio(`/sounds/${alarm}.mp3`);
 
   useEffect(() => {
     remainingRef.current = remainingSec;
@@ -36,6 +37,7 @@ const Timer = ({ timerState, label, notifyValue, notifyMode }) => {
 
         if (prev <= 1) {
           clearInterval(intervalRef.current);
+          sound.play()
           new Notification(`${label} completed`, {
             requireInteraction: true
           });

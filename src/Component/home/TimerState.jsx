@@ -11,7 +11,7 @@ const TimerState = ({ setTimerstate , setLabel}) => {
         { id: 'long', label: 'Long Break', duration: duration.longBreak * 60 },
     ];
     return (
-        <div className='flex h-fit w-full justify-evenly px-2 py-2 text-xl font-semibold gap-1'>
+        <div className='flex h-fit w-full justify-evenly px-2 py-2 text-sm md:text-xl font-semibold gap-1'>
             {modes.map(mode => (
                 <div
                     key={mode.id}

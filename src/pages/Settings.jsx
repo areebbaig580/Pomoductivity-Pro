@@ -5,7 +5,7 @@ import HeadingComp from '../Component/settings/HeadingComp'
 import NotificationSet from '../Component/settings/NotificationSet'
 import Themesett from '../Component/settings/Themesett'
 
-const Settings = ({ notifyMode, setNotifyMode, notifyValue, setNotifyValue }) => {
+const Settings = ({ notifyMode, setNotifyMode, notifyValue, setNotifyValue, setAlarm ,alarm }) => {
     return (
         <div className=' min-h-screen w-full flex flex-col items-center px-3 bg-bg'>
             <Head />
@@ -18,7 +18,11 @@ const Settings = ({ notifyMode, setNotifyMode, notifyValue, setNotifyValue }) =>
                 notifyMode={notifyMode}
                 setNotifyMode={setNotifyMode}
                 notifyValue={notifyValue}
-                setNotifyValue={setNotifyValue} />
+                setNotifyValue={setNotifyValue}
+                setAlarm={setAlarm}
+                alarm={alarm}
+            />
+
         </div>
     )
 }
