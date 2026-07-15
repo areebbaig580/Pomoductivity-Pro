@@ -9,16 +9,18 @@ const App = () => {
   document.documentElement.setAttribute('data-theme', theme)
 
   useEffect(() => {
-    if ("Notification" in window) {
-      Notification.requestPermission();
-    }
+
+    Notification.requestPermission().then(permission => {
+      console.log(permission);
+    });
+
   }, []);
 
   const [notifyMode, setNotifyMode] = useState('last');
   const [notifyValue, setNotifyValue] = useState(1);
 
-  const sound = JSON.parse(localStorage.getItem('sound'))|| 'alarm';
-  const [alarm , setAlarm] = useState(sound);
+  const sound = JSON.parse(localStorage.getItem('sound')) || 'alarm';
+  const [alarm, setAlarm] = useState(sound);
 
   return (
     <div className='min-h-screen w-full bg-bg text-text'>
@@ -26,7 +28,7 @@ const App = () => {
         <Route path='/' element={<Home
           notifyValue={notifyValue}
           notifyMode={notifyMode}
-          alarm = {alarm}
+          alarm={alarm}
         />}
         />
         <Route path='/dashboard' element={<Dashboard />} />
@@ -35,8 +37,8 @@ const App = () => {
           setNotifyMode={setNotifyMode}
           notifyValue={notifyValue}
           setNotifyValue={setNotifyValue}
-          alarm = {alarm}
-          setAlarm ={setAlarm}
+          alarm={alarm}
+          setAlarm={setAlarm}
 
         />} />
 

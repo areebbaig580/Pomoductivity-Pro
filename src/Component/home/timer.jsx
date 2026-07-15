@@ -24,11 +24,11 @@ const Timer = ({ timerState, label, notifyValue, notifyMode, alarm }) => {
     setRemainingSec(timerState);
   }, [timerState]);
 
-  // useEffect(() => {
-  //   if (notifyMode === 'last' && remainingSec === notifyValue * 60) {
-  //     new Notification(`${remainingRef.current / 60} min left!`);
-  //   }
-  // }, [remainingSec, notifyMode, notifyValue]);
+  useEffect(() => {
+    if (notifyMode === 'last' && remainingSec === notifyValue * 60 && Notification.permission === "granted") {
+      new Notification(`${remainingRef.current / 60} min left!`);
+    }
+  }, [remainingSec, notifyMode, notifyValue]);
 
   useEffect(() => {
     if (!isRunning) return;
@@ -39,9 +39,13 @@ const Timer = ({ timerState, label, notifyValue, notifyMode, alarm }) => {
         if (prev <= 1) {
           clearInterval(intervalRef.current);
           soundRef.current?.play();
-          // new Notification(`${label} completed`, {
-          //   requireInteraction: true
-          // });
+          
+          if (Notification.permission === "granted") {
+
+            new Notification(`${label} completed`, {
+              requireInteraction: true
+            });
+          }
 
           if (label === 'Focus') {
 
@@ -71,12 +75,12 @@ const Timer = ({ timerState, label, notifyValue, notifyMode, alarm }) => {
       })
     }, 1000);
 
-    // if (notifyMode === 'every') {
+    if (Notification.permission === "granted" && notifyMode === 'every') {
 
-    //   notifyRef.current = setInterval(() => {
-    //     new Notification(`${Math.round(remainingRef.current / 60)} min remaining`);
-    //   }, notifyValue * 60 * 1000);
-    // }
+      notifyRef.current = setInterval(() => {
+        new Notification(`${Math.round(remainingRef.current / 60)} min remaining`);
+      }, notifyValue * 60 * 1000);
+    }
 
     return () => {
       clearInterval(intervalRef.current);
