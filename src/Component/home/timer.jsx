@@ -7,7 +7,11 @@ const Timer = ({ timerState, label, notifyValue, notifyMode, alarm }) => {
   const intervalRef = useRef(null);
   const notifyRef = useRef(null);
   const remainingRef = useRef(remainingSec);
-  const sound = new Audio(`/sounds/${alarm}.mp3`);
+  const soundRef = useRef(null);
+
+  useEffect(() => {
+    soundRef.current = new Audio(`/sounds/${alarm}.mp3`);
+  }, [alarm]);
   const list = JSON.parse(localStorage.getItem('data')) || [];
 
   useEffect(() => {
@@ -20,15 +24,11 @@ const Timer = ({ timerState, label, notifyValue, notifyMode, alarm }) => {
     setRemainingSec(timerState);
   }, [timerState]);
 
-  if (notifyMode === 'last') {
-
-    useEffect(() => {
-      if (remainingSec === notifyValue * 60) {
-        new Notification( `${remainingRef.current/60} min left!`);
-      }
-
-    }, [remainingSec]);
-  }
+  useEffect(() => {
+    if (notifyMode === 'last' && remainingSec === notifyValue * 60) {
+      new Notification(`${remainingRef.current / 60} min left!`);
+    }
+  }, [remainingSec, notifyMode, notifyValue]);
 
   useEffect(() => {
     if (!isRunning) return;
@@ -38,7 +38,7 @@ const Timer = ({ timerState, label, notifyValue, notifyMode, alarm }) => {
 
         if (prev <= 1) {
           clearInterval(intervalRef.current);
-          sound.play()
+          soundRef.current?.play();
           new Notification(`${label} completed`, {
             requireInteraction: true
           });
