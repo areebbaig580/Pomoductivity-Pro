@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-const Timer = ({ timerState, label, notifyValue, notifyMode ,alarm }) => {
+const Timer = ({ timerState, label, notifyValue, notifyMode, alarm }) => {
 
   const [remainingSec, setRemainingSec] = useState(timerState);
   const [isRunning, setRunning] = useState(false);
@@ -8,6 +8,7 @@ const Timer = ({ timerState, label, notifyValue, notifyMode ,alarm }) => {
   const notifyRef = useRef(null);
   const remainingRef = useRef(remainingSec);
   const sound = new Audio(`/sounds/${alarm}.mp3`);
+  const list = JSON.parse(localStorage.getItem('data')) || [];
 
   useEffect(() => {
     remainingRef.current = remainingSec;
@@ -23,7 +24,7 @@ const Timer = ({ timerState, label, notifyValue, notifyMode ,alarm }) => {
 
     useEffect(() => {
       if (remainingSec === notifyValue * 60) {
-        new Notification("5 minutes left!");
+        new Notification( `${remainingRef.current/60} min left!`);
       }
 
     }, [remainingSec]);
@@ -41,6 +42,27 @@ const Timer = ({ timerState, label, notifyValue, notifyMode ,alarm }) => {
           new Notification(`${label} completed`, {
             requireInteraction: true
           });
+
+          if (label === 'Focus') {
+
+            const dateToday = new Date();
+            let Year = dateToday.getFullYear();
+            let Month = String(dateToday.getMonth() + 1).padStart(2, '0');
+            let Day = String(dateToday.getDate()).padStart(2, '0');
+            let dateStr = `${Year}-${Month}-${Day}`;
+
+            let session = {
+              date: dateStr,
+              duration: parseInt(remainingSec),
+              timestamp: Date.now(),
+            };
+
+            list.push(session);
+
+            localStorage.setItem('data', JSON.stringify(list));
+
+          }
+
 
           return 0;
         }
