@@ -7,7 +7,7 @@ import Themesett from '../Component/settings/Themesett'
 
 const Settings = ({ notifyMode, setNotifyMode, notifyValue, setNotifyValue, setAlarm ,alarm }) => {
     return (
-        <div className=' min-h-screen w-full flex flex-col items-center px-3 bg-bg'>
+        <div className=' min-h-screen w-full flex flex-col items-center px-2 bg-bg'>
             <Head />
             <HeadingComp label={"Timer"} />
             <TimerControl />

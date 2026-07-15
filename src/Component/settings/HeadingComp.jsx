@@ -2,7 +2,9 @@ import React from 'react'
 
 const HeadingComp = ({ label }) => {
   return (
-    <div className='h-fit w-full md:w-5/10  py-3 px-2 font-bold text-lg md:text-lg mt-2 text-heading1 border-b-1 border-b-border-main '>{label}</div>
+    <div className='h-fit w-full md:w-5/10 mt-2 py-2 flex justify-between'>
+      <div className='h-fit w-fit text-text bg-secondary-main px-4 py-2 text-md md:text-lg rounded-xl flex gap-2'>{label}</div>
+    </div>
   )
 }
 

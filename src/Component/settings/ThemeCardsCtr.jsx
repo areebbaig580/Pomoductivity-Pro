@@ -3,7 +3,7 @@ import Themecard from './Themecard'
 
 const ThemeCardsCtr = () => {
   return (
-    <div className='h-fit w-full flex flex-wrap gap-3 pl-2 mt-2'>
+    <div className='h-fit w-full flex flex-wrap gap-3 pl-2'>
       <Themecard
         name=''
         bg='#8A75E6'
